@@ -8,7 +8,7 @@ techniques. This framework may be particularly useful for the evaluation of
 de-noising and constrained reconstruction techniques, and the possibilities of 
 translating them to less expensive low-field scanners. 
 
-(c) *Weiyi Chen*, *Ziyue Wu*, May 2016.
+(c) *Weiyi Chen*, *Ziyue Wu*, *Krishna Nayak*, May 2016.
 
 [Magnetic Resonance Engineering Laboratory](https://mrel.usc.edu)
 
