@@ -49,8 +49,26 @@ Assumptions
 	will be determined not only by the sequence parameters but also by the initial
 	 state.
 
+Publications
+--------------
+1. Wu Z, Chen W, Nayak KS (2016) Minimum Field Strength Simulator for Proton Density 
+   Weighted MRI. PLoS ONE 11(5): e0154711. doi:10.1371/journal.pone.0154711. 
+   [JNRL](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0154711)
+2. Wu Z, Chen W, Nayak KS (2016) Low-Field Simulation and Minimum Field Strength 
+   Requirements. ISMRM Workshop on Data Sampling and Image Reconstruction, 
+   Sedona, Arizona.
+   [TALK](http://www.ismrm.org/workshops/Data16/program.htm) 
+
 Acknowledgment
 --------------
 Fat-water separation is implemented using the graph cut field-map estimation 
 method from the 
 [ISMRM fat-water toolbox](http://ismrm.org/workshops/FatWater12/data.htm)
+
+License
+--------------
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0"
+src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/"
+property="dct:title">Minimum Field Strength Simulator</span> by <span xmlns:cc="http://creativecommons.org/ns#"
+property="cc:attributionName">Weiyi Chen, Ziyue Wu, Krishna Nayak</span> is licensed under a <a rel="license"
+href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
