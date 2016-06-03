@@ -32,13 +32,13 @@ Assumptions
 1. **Body noise dominance** : 
 	We assume that body thermal noise is the dominant noise source at all field 
 	strengths under investigation (0.1 – 3.0 T).
-2. **Consistent B1^+ field** :
+2. **Consistent B<sub>1</sub><sup>+</sup> field** :
 	We assume that the uniformity of RF transmission is consistent across field 
 	strengths.
-3. **Consistent B1^- field** :
+3. **Consistent B<sub>1</sub><sup>-</sup> field** :
 	We assume that the receiver coils have the same geometry and noise covariance 
 	at different field strengths.
-4. **Consistent B0 homogeneity** :
+4. **Consistent B<sub>0</sub> homogeneity** :
 	We assume the same off-resonance in parts-per-million (ppm) at different field
 	 strengths. This results in less off-resonance in Hertz at lower field.
 5. **Single species dominance** :
