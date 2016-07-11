@@ -24,8 +24,15 @@ Code Structure
 	% See details inside the m-file
 
 ### Demo
-1. Upper Airway Gridding Reconstruction:	**demo_airway.m**
-2. Fat-water Separation:	**demo_fatwater.m**
+We recommend start using this package by running these 2 demos:
+
+1. Upper Airway Gridding Reconstruction:	**demo_airway.m**  
+   This example shows gridding reconstruction on simulated low field data, based on data 
+   acquired using Golden angle radial FLASH at 3T.
+	
+2. Fat-water Separation:	**demo_fatwater.m**  
+   This example shows fat-water separation on simulated low field data, based on data 
+   acquired using product IDEAL GRE sequence at 3T.
 		
 Assumptions
 -----------

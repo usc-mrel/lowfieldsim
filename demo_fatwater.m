@@ -6,12 +6,12 @@
 %
 % (c) Aug. 2014, Weiyi(Wayne) Chen, University of Southern California
 
-%% House keeping
+%% House keeping, 
 clear; clc; close all;
 load 'fat-water@3T-3echo.mat';
 addpath( genpath( './fw_demo_util' ) );
 
-B0_low = 0.3;
+B0_low = 0.3;   % target field strength
 %% Low SNR Simulation
 
 inParam.B_high   = 3;
@@ -37,11 +37,12 @@ end
 
 % fat-water toolbox requires data in format [Nkx Nky Nkz Ncoil NTE]
 k_low = permute(k_low, [1 2 3 5 4]);
+k_high = permute(k_high, [1 2 3 5 4]);
 
 %% Assamble imDataParams structure
-recon = sqrt( size(k_low,1) * size(k_low,2) )...
+recon_low = sqrt( size(k_low,1) * size(k_low,2) )...
         * ifftshift(ifft2(fftshift(k_low)));
-imDataParams.images = recon;
+imDataParams.images = recon_low;
 imDataParams.FieldStrength = 3;
 imDataParams.TE = TE;
 imDataParams.PrecessionIsClockwise = 1;
@@ -72,18 +73,49 @@ THRESHOLD = 0.01;
 
 %% Field inhomogeneities using a graph cut algorithm. 
 % Magn Reson Med. 2010 Jan;63(1):79-90.
+display('Separating fat/water from simulated data...')
 tic
   outParams ...
       = fw_i2cm1i_3pluspoint_hernando_graphcut( imDataParams, algoParams );
 toc
-fat_frac = rot90( computeFF(outParams), 3 );
-water = rot90( outParams.species(1).amps, 3 );
-fat = rot90( outParams.species(2).amps, 3 );
+fat_frac_low = rot90( computeFF(outParams), 3 );
+water_low = rot90( outParams.species(1).amps, 3 );
+fat_low = rot90( outParams.species(2).amps, 3 );
 
+%% Run again for accquired 3T data, just for comparison purpose
+recon_high = sqrt( size(k_high,1) * size(k_high,2) )...
+        * ifftshift(ifft2(fftshift(k_high)));
+imDataParams.images = recon_high;
+imDataParams.FieldStrength = 3;
+imDataParams.TE = TE;
+imDataParams.PrecessionIsClockwise = 1;
+
+display('Separating fat/water from accquired data...')
+tic
+  outParams ...
+      = fw_i2cm1i_3pluspoint_hernando_graphcut( imDataParams, algoParams );
+toc
+fat_frac_high = rot90( computeFF(outParams), 3 );
+water_high = rot90( outParams.species(1).amps, 3 );
+fat_high = rot90( outParams.species(2).amps, 3 );
 %% Output
 figure;
-subplot(131),imshow(abs(water),[]); title('Water'); 
-subplot(132),imshow(abs(fat),[]); title('Fat'); 
-subplot(133),imshow(fat_frac,[0 100]);
-title('Fat Fraction');
+
+% accquired 3T
+subplot(231),imshow(abs(water_high),[]); 
+set(gca,'FontSize',18);ylabel('Accquired @ 3T');title('Water'); 
+subplot(232),imshow(abs(fat_high),[]); 
+set(gca,'FontSize',18);title('Fat'); 
+subplot(233),imshow(fat_frac_high,[0 100]);
+set(gca,'FontSize',18);title('Fat Fraction');
+
+% simulated low field
+subplot(234),imshow(abs(water_low),[]); 
+set(gca,'FontSize',18);
+ylabel(['Simulated @ ',num2str(inParam.B_low),'T']);
+title('Water'); 
+subplot(235),imshow(abs(fat_low),[]); 
+set(gca,'FontSize',18);title('Fat'); 
+subplot(236),imshow(fat_frac_low,[0 100]);
+set(gca,'FontSize',18);title('Fat Fraction');
 
