@@ -1,3 +1,9 @@
+<div align="center">
+<a href="http://www.opensourceimaging.org/project/minimum-field-strength-simulator/" target="_blank">
+<img src="https://usc-mrel.github.io/logo/lfs_logo_small.jpg" width="300"></img>
+</a>
+</div>
+
 MATLAB Scripts for Low SNR Simulation at Low Field Strengths
 ============================================================
 Under certain assumptions, low-field MRI acquisitions can be simulated from 
